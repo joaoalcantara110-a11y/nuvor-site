@@ -100,5 +100,14 @@ export type Dictionary = {
   product: {
     salePrice: string;
     originalPrice: string;
+    breadcrumbHome: string;
+    breadcrumbCollection: string;
+    backToCollection: string;
+    buyOnWhatsapp: string;
+    zoomHint: string;
+    notFoundEyebrow: string;
+    notFoundTitle: string;
+    notFoundText: string;
+    notFoundCta: string;
   };
 };

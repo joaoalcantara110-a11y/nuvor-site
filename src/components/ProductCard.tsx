@@ -1,6 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Product } from "@/data/products";
 import type { Dictionary } from "@/dictionaries/types";
+import type { Locale } from "@/lib/locale";
+import { productHref } from "@/lib/routes";
 import { formatPriceEUR, formatWhatsAppProductMessage } from "@/lib/whatsapp";
 import WhatsAppLink from "./WhatsAppLink";
 
@@ -13,9 +16,11 @@ const categoryKey = {
 export default function ProductCard({
   product,
   dict,
+  lang,
 }: {
   product: Product;
   dict: Dictionary;
+  lang: Locale;
 }) {
   const price = formatPriceEUR(product.price);
   const message = formatWhatsAppProductMessage(
@@ -24,9 +29,14 @@ export default function ProductCard({
     price
   );
 
+  const href = productHref(lang, product.id);
+
   return (
     <div className="group flex flex-col">
-      <div className="relative aspect-square overflow-hidden rounded-2xl bg-white">
+      <Link
+        href={href}
+        className="relative block aspect-square overflow-hidden rounded-2xl bg-white"
+      >
         <Image
           src={product.image}
           alt={product.name}
@@ -34,7 +44,7 @@ export default function ProductCard({
           sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 22vw"
           className="object-contain p-6 transition-transform duration-500 ease-out group-hover:scale-[1.06]"
         />
-      </div>
+      </Link>
 
       <div className="mt-4 flex items-start justify-between gap-3">
         <div>
@@ -56,12 +66,12 @@ export default function ProductCard({
       </div>
 
       <div className="mt-3 flex items-center gap-3">
-        <a
-          href="#coleccao"
+        <Link
+          href={href}
           className="font-sans text-xs font-semibold uppercase tracking-[0.06em] text-ink/70 underline underline-offset-4 transition-colors hover:text-ink"
         >
           {dict.cta.viewModel} →
-        </a>
+        </Link>
         <WhatsAppLink
           message={message}
           className="ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-ink/5 text-ink/70 transition-colors hover:bg-accent hover:text-ink"

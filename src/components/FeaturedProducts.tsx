@@ -1,9 +1,16 @@
 import type { Dictionary } from "@/dictionaries/types";
+import type { Locale } from "@/lib/locale";
 import { featuredProductIds, getProductById } from "@/data/products";
 import ProductCard from "./ProductCard";
 import Reveal from "./Reveal";
 
-export default function FeaturedProducts({ dict }: { dict: Dictionary }) {
+export default function FeaturedProducts({
+  dict,
+  lang,
+}: {
+  dict: Dictionary;
+  lang: Locale;
+}) {
   const items = featuredProductIds
     .map((id) => getProductById(id))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
@@ -24,7 +31,7 @@ export default function FeaturedProducts({ dict }: { dict: Dictionary }) {
       <div className="grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-3 lg:grid-cols-6 lg:gap-x-6">
         {items.map((product, i) => (
           <Reveal key={product.id} delay={i * 0.06}>
-            <ProductCard product={product} dict={dict} />
+            <ProductCard product={product} dict={dict} lang={lang} />
           </Reveal>
         ))}
       </div>

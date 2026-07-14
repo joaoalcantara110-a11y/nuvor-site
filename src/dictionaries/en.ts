@@ -120,6 +120,16 @@ const en: Dictionary = {
   product: {
     salePrice: "Price",
     originalPrice: "Original price",
+    breadcrumbHome: "Home",
+    breadcrumbCollection: "Collection",
+    backToCollection: "Back to collection",
+    buyOnWhatsapp: "Buy via WhatsApp",
+    zoomHint: "Click to enlarge",
+    notFoundEyebrow: "Error 404",
+    notFoundTitle: "We couldn't find this model.",
+    notFoundText:
+      "The eyewear you're looking for may have changed name or is no longer available. Explore the rest of the NUVOR collection.",
+    notFoundCta: "View the full collection",
   },
 };
 

@@ -120,6 +120,16 @@ const fr: Dictionary = {
   product: {
     salePrice: "Prix",
     originalPrice: "Ancien prix",
+    breadcrumbHome: "Accueil",
+    breadcrumbCollection: "Collection",
+    backToCollection: "Retour à la collection",
+    buyOnWhatsapp: "Acheter sur WhatsApp",
+    zoomHint: "Cliquer pour agrandir",
+    notFoundEyebrow: "Erreur 404",
+    notFoundTitle: "Ce modèle est introuvable.",
+    notFoundText:
+      "Les lunettes que vous cherchez ont peut-être changé de nom ou ne sont plus disponibles. Découvrez le reste de la collection NUVOR.",
+    notFoundCta: "Voir toute la collection",
   },
 };
 

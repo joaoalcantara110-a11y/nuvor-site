@@ -5,13 +5,17 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import clsx from "clsx";
 import { locales, localeNames, type Locale } from "@/lib/locale";
+import { productHref } from "@/lib/routes";
 
 export default function LanguageSwitcher({
   lang,
   tone = "dark",
+  productSlug,
 }: {
   lang: Locale;
   tone?: "dark" | "light";
+  /** When set (on a product page), builds the correctly localized product URL per language. */
+  productSlug?: string;
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -53,7 +57,11 @@ export default function LanguageSwitcher({
           {locales.map((l) => (
             <li key={l}>
               <Link
-                href={`/${l}${rest ? `/${rest}` : ""}`}
+                href={
+                  productSlug
+                    ? productHref(l, productSlug)
+                    : `/${l}${rest ? `/${rest}` : ""}`
+                }
                 onClick={() => setOpen(false)}
                 className={clsx(
                   "block px-4 py-2.5 text-sm hover:bg-ink/5 transition-colors",

@@ -11,9 +11,14 @@ import MobileMenu from "./MobileMenu";
 export default function Header({
   lang,
   dict,
+  solid = false,
+  productSlug,
 }: {
   lang: Locale;
   dict: Dictionary;
+  /** Force the solid/dark header styling — for pages without a dark hero at the top. */
+  solid?: boolean;
+  productSlug?: string;
 }) {
   const [scrolled, setScrolled] = useState(false);
 
@@ -27,22 +32,23 @@ export default function Header({
   }, []);
 
   const navItems: { label: string; href: string }[] = [
-    { label: dict.nav.shop, href: "#coleccao" },
-    { label: dict.nav.news, href: "#destaque" },
-    { label: dict.nav.sun, href: "#coleccao" },
-    { label: dict.nav.optical, href: "#coleccao" },
-    { label: dict.nav.sport, href: "#coleccao" },
-    { label: dict.nav.about, href: "#historia" },
-    { label: dict.nav.contact, href: "#rodape" },
+    { label: dict.nav.shop, href: `/${lang}#coleccao` },
+    { label: dict.nav.news, href: `/${lang}#destaque` },
+    { label: dict.nav.sun, href: `/${lang}#coleccao` },
+    { label: dict.nav.optical, href: `/${lang}#coleccao` },
+    { label: dict.nav.sport, href: `/${lang}#coleccao` },
+    { label: dict.nav.about, href: `/${lang}#historia` },
+    { label: dict.nav.contact, href: `/${lang}#rodape` },
   ];
 
-  const tone: "dark" | "light" = scrolled ? "dark" : "light";
+  const effectiveScrolled = solid || scrolled;
+  const tone: "dark" | "light" = effectiveScrolled ? "dark" : "light";
 
   return (
     <header
       className={clsx(
         "fixed inset-x-0 top-0 z-40 transition-all duration-500",
-        scrolled
+        effectiveScrolled
           ? "bg-paper/90 backdrop-blur-md shadow-[0_1px_0_0_rgba(20,20,20,0.08)]"
           : "bg-transparent"
       )}
@@ -68,9 +74,9 @@ export default function Header({
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <LanguageSwitcher lang={lang} tone={tone} />
+          <LanguageSwitcher lang={lang} tone={tone} productSlug={productSlug} />
           <a
-            href="#coleccao"
+            href={`/${lang}#coleccao`}
             className={clsx(
               "font-sans text-[0.75rem] font-semibold uppercase tracking-[0.08em] px-5 py-2.5 rounded-full transition-colors",
               tone === "dark"
@@ -83,7 +89,7 @@ export default function Header({
         </div>
 
         <div className="flex items-center gap-3 lg:hidden">
-          <LanguageSwitcher lang={lang} tone={tone} />
+          <LanguageSwitcher lang={lang} tone={tone} productSlug={productSlug} />
           <MobileMenu lang={lang} dict={dict} navItems={navItems} tone={tone} />
         </div>
       </div>

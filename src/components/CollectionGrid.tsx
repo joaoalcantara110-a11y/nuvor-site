@@ -1,9 +1,16 @@
 import type { Dictionary } from "@/dictionaries/types";
+import type { Locale } from "@/lib/locale";
 import { products } from "@/data/products";
 import ProductCard from "./ProductCard";
 import Reveal from "./Reveal";
 
-export default function CollectionGrid({ dict }: { dict: Dictionary }) {
+export default function CollectionGrid({
+  dict,
+  lang,
+}: {
+  dict: Dictionary;
+  lang: Locale;
+}) {
   return (
     <section id="coleccao" className="bg-paper px-6 py-24 md:px-10 lg:px-14">
       <Reveal>
@@ -20,7 +27,7 @@ export default function CollectionGrid({ dict }: { dict: Dictionary }) {
       <div className="grid grid-cols-2 gap-x-5 gap-y-10 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-6">
         {products.map((product, i) => (
           <Reveal key={product.id} delay={(i % 4) * 0.05}>
-            <ProductCard product={product} dict={dict} />
+            <ProductCard product={product} dict={dict} lang={lang} />
           </Reveal>
         ))}
       </div>

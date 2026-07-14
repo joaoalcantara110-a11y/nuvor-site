@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import "../globals.css";
 import { locales, isLocale } from "@/lib/locale";
 import { getDictionary } from "@/dictionaries";
+import { siteUrl } from "@/lib/site";
 import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 
 const spaceGrotesk = Space_Grotesk({
@@ -36,6 +37,7 @@ export async function generateMetadata({
   if (!isLocale(lang)) return {};
   const dict = await getDictionary(lang);
   return {
+    metadataBase: new URL(siteUrl),
     title: dict.meta.title,
     description: dict.meta.description,
   };

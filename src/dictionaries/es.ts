@@ -120,6 +120,16 @@ const es: Dictionary = {
   product: {
     salePrice: "Precio",
     originalPrice: "Precio anterior",
+    breadcrumbHome: "Inicio",
+    breadcrumbCollection: "Colección",
+    backToCollection: "Volver a la colección",
+    buyOnWhatsapp: "Comprar por WhatsApp",
+    zoomHint: "Clic para ampliar",
+    notFoundEyebrow: "Error 404",
+    notFoundTitle: "No encontramos este modelo.",
+    notFoundText:
+      "Las gafas que buscas pueden haber cambiado de nombre o ya no estar disponibles. Explora el resto de la colección NUVOR.",
+    notFoundCta: "Ver la colección completa",
   },
 };
 

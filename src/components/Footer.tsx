@@ -7,9 +7,11 @@ import WhatsAppLink from "./WhatsAppLink";
 export default function Footer({
   lang,
   dict,
+  productSlug,
 }: {
   lang: Locale;
   dict: Dictionary;
+  productSlug?: string;
 }) {
   const year = new Date().getFullYear();
 
@@ -30,17 +32,17 @@ export default function Footer({
             </h4>
             <ul className="mt-4 space-y-2.5 font-sans text-sm text-paper/80">
               <li>
-                <a href="#coleccao" className="hover:text-paper">
+                <a href={`/${lang}#coleccao`} className="hover:text-paper">
                   {dict.nav.sun}
                 </a>
               </li>
               <li>
-                <a href="#coleccao" className="hover:text-paper">
+                <a href={`/${lang}#coleccao`} className="hover:text-paper">
                   {dict.nav.optical}
                 </a>
               </li>
               <li>
-                <a href="#coleccao" className="hover:text-paper">
+                <a href={`/${lang}#coleccao`} className="hover:text-paper">
                   {dict.nav.sport}
                 </a>
               </li>
@@ -53,7 +55,7 @@ export default function Footer({
             </h4>
             <ul className="mt-4 space-y-2.5 font-sans text-sm text-paper/80">
               <li>
-                <a href="#historia" className="hover:text-paper">
+                <a href={`/${lang}#historia`} className="hover:text-paper">
                   {dict.nav.about}
                 </a>
               </li>
@@ -95,7 +97,7 @@ export default function Footer({
         </div>
 
         <div className="shrink-0">
-          <LanguageSwitcher lang={lang} tone="light" />
+          <LanguageSwitcher lang={lang} tone="light" productSlug={productSlug} />
         </div>
       </div>
 

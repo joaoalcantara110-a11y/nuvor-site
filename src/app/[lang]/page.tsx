@@ -33,10 +33,10 @@ export default async function HomePage({
         <Hero dict={dict} />
         <BrandStatement dict={dict} />
         <EditorialGrid dict={dict} />
-        <FeaturedProducts dict={dict} />
+        <FeaturedProducts dict={dict} lang={lang} />
         <BoldOrangeSection dict={dict} />
         <StyleSelector dict={dict} />
-        <CollectionGrid dict={dict} />
+        <CollectionGrid dict={dict} lang={lang} />
         <MaleCampaign dict={dict} />
         <BrandStory dict={dict} />
         <NuvorSociety dict={dict} />
