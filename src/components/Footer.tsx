@@ -82,7 +82,7 @@ export default function Footer({
               </li>
               <li>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/nuvor.eyewear"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-paper"
